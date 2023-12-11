@@ -4,11 +4,12 @@
 
 UAction::~UAction()
 {
+	//Remove (Unbind) Action
 }
 
 void UAction::DoAction(const FInputActionInstance& _InputInstance) {}
 
-void UAction::BindAction(UEnhancedInputComponent* _IC, UInputAction* _InputAction)
+void UAction::BindAction(UEnhancedInputComponent* _IC, const UInputAction* _InputAction)
 {
 	_IC->BindAction(_InputAction, ETriggerEvent::Triggered, this, &UAction::DoAction);
 }

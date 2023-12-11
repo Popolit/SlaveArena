@@ -11,7 +11,7 @@ class SLAVEARENA_API ASlave : public ACharacter
 	GENERATED_BODY()
 
 public:
-	ASlave();
+	ASlave(const FObjectInitializer& _ObjectInitializer);
 
 protected:
 	virtual void BeginPlay() override;
@@ -19,10 +19,6 @@ protected:
 public:	
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-public:
-	void Move(const FInputActionInstance& _Instance);
-	void Look(const FInputActionInstance& _Instance);
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Input")

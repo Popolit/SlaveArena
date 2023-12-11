@@ -16,5 +16,5 @@ public:
 	virtual void DoAction(const FInputActionInstance& _InputInstance) override;
 
 private:
-	void BindAction(UEnhancedInputComponent* _IC, class UInputAction* _InputAction);
+	void BindAction(UEnhancedInputComponent* _IC, const class UInputAction* _InputAction);
 };
