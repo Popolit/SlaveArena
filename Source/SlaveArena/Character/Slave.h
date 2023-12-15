@@ -1,7 +1,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "InputAction.h"
 #include "GameFramework/Character.h"
 #include "Slave.generated.h"
 
@@ -11,16 +10,26 @@ class SLAVEARENA_API ASlave : public ACharacter
 	GENERATED_BODY()
 
 public:
-	ASlave(const FObjectInitializer& _ObjectInitializer);
+	ASlave();
 
 protected:
 	virtual void BeginPlay() override;
 
 public:	
-	virtual void Tick(float DeltaTime) override;
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void Tick(float _DeltaTime) override;
+	virtual void SetupPlayerInputComponent(UInputComponent* _PlayerInputComponent) override;
+	virtual void Landed(const FHitResult& _Hit) override;
+
+private:
+	void CreateCameraAndSpringArm();
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
-		TObjectPtr<class UActionData> ActionData_;
+		TObjectPtr<class UInputActionData> InputActionData_;
+	UPROPERTY(VisibleDefaultsOnly)
+		TObjectPtr<class USpringArmComponent> SpringArmComponent_;
+	UPROPERTY(VisibleDefaultsOnly)
+		TObjectPtr<class UCameraComponent> CameraComponent_;
+	UPROPERTY(VisibleDefaultsOnly)
+		TObjectPtr<class UInteractComponent> InteractComponent_;
 };

@@ -10,7 +10,10 @@ class SLAVEARENA_API UAnimInstance_Slave : public UAnimInstance
 	GENERATED_BODY()
 public:
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
+
 protected:
 	UPROPERTY(BlueprintReadOnly)
-		float Speed;
+		float Speed_;
+	UPROPERTY(BlueprintReadOnly)
+		bool bIsInAir_;
 };

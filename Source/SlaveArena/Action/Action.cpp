@@ -2,14 +2,9 @@
 
 #include "EnhancedInputComponent.h"
 
-UAction::~UAction()
-{
-	//Remove (Unbind) Action
-}
+void UAction::DoAction(const void* _Instance) {}
 
-void UAction::DoAction(const FInputActionInstance& _InputInstance) {}
-
-void UAction::BindAction(UEnhancedInputComponent* _IC, const UInputAction* _InputAction)
+void UAction::DoActionByInput(const FInputActionInstance& _Instance)
 {
-	_IC->BindAction(_InputAction, ETriggerEvent::Triggered, this, &UAction::DoAction);
+	DoAction(&_Instance);
 }

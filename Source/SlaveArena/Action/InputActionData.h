@@ -1,12 +1,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ActionData.generated.h"
+#include "InputActionData.generated.h"
 
 
 
 UCLASS(BlueprintType)
-class SLAVEARENA_API UActionData : public UDataAsset
+class SLAVEARENA_API UInputActionData : public UDataAsset
 {
 	GENERATED_BODY()
 public:
@@ -17,5 +17,5 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 		TObjectPtr<class UInputMappingContext> InputMappingContext_;
 	UPROPERTY(EditDefaultsOnly)
-		TMap<TObjectPtr<class UInputAction>, TSubclassOf<class UAction>> Actions_;
+		TMap<TObjectPtr<class UInputAction>, TSubclassOf<class UAction>> InputActions_;
 };

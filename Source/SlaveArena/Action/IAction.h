@@ -16,5 +16,5 @@ class SLAVEARENA_API IIAction
 	GENERATED_BODY()
 
 public:
-	virtual void DoAction(const struct FInputActionInstance& _InputInstance) = 0;
+	virtual void DoAction(const void* _Instance = nullptr) = 0;
 };

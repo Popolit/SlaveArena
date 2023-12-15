@@ -8,13 +8,10 @@ UCLASS(HideDropdown)
 class SLAVEARENA_API UAction : public UObject, public IIAction
 {
 	GENERATED_BODY()
-
-	friend class UActionData;
+	friend class UInputActionData;
 public:
-	virtual ~UAction() override;
-
-	virtual void DoAction(const FInputActionInstance& _InputInstance) override;
+	virtual void DoAction(const void* _Instance = nullptr) override;
 
 private:
-	void BindAction(UEnhancedInputComponent* _IC, const class UInputAction* _InputAction);
+	void DoActionByInput(const struct FInputActionInstance& _Instance);
 };

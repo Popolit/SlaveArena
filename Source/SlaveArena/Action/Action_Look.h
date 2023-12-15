@@ -10,5 +10,5 @@ class SLAVEARENA_API UAction_Look : public UAction
 	GENERATED_BODY()
 
 public:
-	virtual void DoAction(const FInputActionInstance& _InputInstance) override;
+	virtual void DoAction(const void* _Instance) override;
 };

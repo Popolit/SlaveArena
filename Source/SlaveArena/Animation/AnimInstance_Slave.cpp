@@ -1,6 +1,7 @@
 #include "AnimInstance_Slave.h"
 
 #include "GameFramework/Character.h"
+#include "GameFramework/PawnMovementComponent.h"
 
 void UAnimInstance_Slave::NativeUpdateAnimation(float DeltaSeconds)
 {
@@ -10,5 +11,6 @@ void UAnimInstance_Slave::NativeUpdateAnimation(float DeltaSeconds)
 		return;
 	}
 
-	Speed = Pawn->GetVelocity().Size2D();
+	Speed_ = Pawn->GetVelocity().Size2D();
+	bIsInAir_ = Pawn->GetMovementComponent()->IsFalling();
 }

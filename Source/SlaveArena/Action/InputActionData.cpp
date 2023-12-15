@@ -1,4 +1,4 @@
-#include "ActionData.h"
+#include "InputActionData.h"
 
 #include "Action.h"
 #include "Blueprint/UserWidget.h"
@@ -6,7 +6,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 
-void UActionData::AddMappingContext(const ULocalPlayer* _LocalPlayer) const
+void UInputActionData::AddMappingContext(const ULocalPlayer* _LocalPlayer) const
 {
 	if (InputMappingContext_.IsNull())
 	{
@@ -27,7 +27,7 @@ void UActionData::AddMappingContext(const ULocalPlayer* _LocalPlayer) const
 	}
 }
 
-void UActionData::BindAll(AActor* _Actor)
+void UInputActionData::BindAll(AActor* _Actor)
 {
 	UEnhancedInputComponent* InputComponent = Cast<UEnhancedInputComponent>(_Actor->InputComponent.Get());
 	if(nullptr == InputComponent)
@@ -37,7 +37,7 @@ void UActionData::BindAll(AActor* _Actor)
 	}
 
 	//Input -> Action Binding
-	for(auto& Elem : Actions_)
+	for(auto& Elem : InputActions_)
 	{
 		if(nullptr == Elem.Value)
 		{
@@ -45,13 +45,13 @@ void UActionData::BindAll(AActor* _Actor)
 			continue;
 		}
 		UAction* NewAction = NewObject<UAction>(_Actor, Elem.Value);
-		UInputAction* InputAction = Elem.Key.Get();
-		NewAction->BindAction(InputComponent, InputAction);
+		const UInputAction* InputAction = Elem.Key.Get();
+		InputComponent->BindAction(InputAction, ETriggerEvent::Triggered, NewAction, &UAction::DoActionByInput);
 	}
 }
 
 
-void UActionData::BindAll(UUserWidget* _Widget)
+void UInputActionData::BindAll(UUserWidget* _Widget)
 {
-	
+	//TODO : Widget Outer ¹ÙÀÎµù
 }
