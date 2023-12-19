@@ -4,9 +4,6 @@
 #include "Action_Extended.h"
 #include "Action_InteractProp.generated.h"
 
-/**
- * 
- */
 UCLASS(Blueprintable)
 class SLAVEARENA_API UAction_InteractProp : public UAction_Extended
 {

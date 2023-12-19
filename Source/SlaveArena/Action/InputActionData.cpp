@@ -41,7 +41,7 @@ void UInputActionData::BindAll(AActor* _Actor)
 	{
 		if(nullptr == Elem.Value)
 		{
-			ensureMsgf(false, TEXT("%s's Action was not nullptr"), *Elem.Key->GetName());
+			ensureMsgf(false, TEXT("%s's Action was nullptr"), *Elem.Key->GetName());
 			continue;
 		}
 		UAction* NewAction = NewObject<UAction>(_Actor, Elem.Value);

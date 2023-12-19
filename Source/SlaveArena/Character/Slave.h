@@ -21,15 +21,19 @@ public:
 	virtual void Landed(const FHitResult& _Hit) override;
 
 private:
-	void CreateCameraAndSpringArm();
+	void CreateAllComponents();
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
-		TObjectPtr<class UInputActionData> InputActionData_;
+		TObjectPtr<class UInputActionData> InputActionData_Default_;
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+		TObjectPtr<class UInputActionData> InputActionData_UI_;
 	UPROPERTY(VisibleDefaultsOnly)
 		TObjectPtr<class USpringArmComponent> SpringArmComponent_;
 	UPROPERTY(VisibleDefaultsOnly)
 		TObjectPtr<class UCameraComponent> CameraComponent_;
 	UPROPERTY(VisibleDefaultsOnly)
 		TObjectPtr<class UInteractComponent> InteractComponent_;
+	UPROPERTY(VisibleDefaultsOnly)
+		TObjectPtr<class UInventoryComponent> InventoryComponent_;
 };

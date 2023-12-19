@@ -20,7 +20,7 @@ void UAction_Extended::PlayAnimation() const
 	ACharacter* Character = Cast<ACharacter>(GetOuter());
 	if(Character)
 	{
-		Character->PlayAnimMontage(AnimMontage_.Get());
+		Character->PlayAnimMontage(AnimMontage_.LoadSynchronous());
 	}
 }
 

@@ -18,5 +18,5 @@ class SLAVEARENA_API IInteractable
 	GENERATED_BODY()
 
 public:
-	virtual void Interact() = 0;
+	virtual void Interact(AActor* _Causer = nullptr) = 0;
 };
