@@ -1,15 +1,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Interactable.h"
-#include "Prop.h"
+#include "GameFramework/Actor.h"
 #include "Weapon.generated.h"
 
 UCLASS()
-class SLAVEARENA_API AWeapon : public AProp, public IInteractable
+class SLAVEARENA_API AWeapon : public AActor
 {
 	GENERATED_BODY()
 public:
 	AWeapon();
-	virtual void Interact() override;
 };

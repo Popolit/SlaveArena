@@ -4,8 +4,6 @@
 #include "Components/ActorComponent.h"
 #include "InventoryComponent.generated.h"
 
-struct FItemInfo;
-
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class SLAVEARENA_API UInventoryComponent : public UActorComponent
 {

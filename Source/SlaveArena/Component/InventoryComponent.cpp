@@ -1,5 +1,7 @@
 #include "InventoryComponent.h"
 
+#include "SlaveArena/Prop/Item.h"
+
 UInventoryComponent::UInventoryComponent()
 {
 	MaxSlot_ = 9;

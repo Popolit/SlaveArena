@@ -11,6 +11,11 @@ class SLAVEARENA_API UUW_Inventory_Slot : public UUserWidget
 protected:
 	virtual void NativeOnInitialized() override;
 
+public:
+	void SetItem(const uint8 _ItemID);
+	void SetItemCount(const uint8 _Count) const;
+	void SetSlotEmpty() const;
+
 private:
 	UPROPERTY(meta = (BindWidget))
 		TObjectPtr<class UImage> V_Img_Icon_;

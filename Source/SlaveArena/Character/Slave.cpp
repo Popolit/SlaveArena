@@ -4,8 +4,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "SlaveArena/Component/InteractComponent.h"
-#include "SlaveArena/Action/InputActionData.h"
 #include "SlaveArena/Component/InventoryComponent.h"
+#include "SlaveArena/Action/InputActionData.h"
 
 ASlave::ASlave()
 {
@@ -22,6 +22,8 @@ ASlave::ASlave()
 	SpringArmComponent_->bUsePawnControlRotation = true;
 
 	CameraComponent_->SetRelativeLocation(FVector(-30.0, 0.0, 0.0));
+
+	
 }
 
 void ASlave::BeginPlay()
@@ -56,7 +58,7 @@ void ASlave::Landed(const FHitResult& _Hit)
 	Super::Landed(_Hit);
 }
 
-void ASlave::CreateAllComponents() 
+void ASlave::CreateAllComponents()
 {
 	SpringArmComponent_ = CreateDefaultSubobject<USpringArmComponent>("SpringArm");
 	SpringArmComponent_->SetupAttachment(GetMesh());
@@ -67,5 +69,5 @@ void ASlave::CreateAllComponents()
 	InteractComponent_ = CreateDefaultSubobject<UInteractComponent>("InteractComponent");
 	InteractComponent_->SetupAttachment(GetMesh());
 
-	InventoryComponent_->CreateDefaultSubobject<UInventoryComponent>("InventoryComponent");
+	InventoryComponent_ = CreateDefaultSubobject<UInventoryComponent>("InventoryComponent");
 }

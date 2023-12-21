@@ -19,7 +19,7 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 		EItemType Type_;
 	UPROPERTY(EditDefaultsOnly)
-		TSoftClassPtr<class UImage> Icon_;
+		TSoftObjectPtr<UTexture2D> Icon_;
 	UPROPERTY(EditDefaultsOnly)
 		FSoftObjectPath Tooltip_;
 	UPROPERTY(EditDefaultsOnly)

@@ -3,7 +3,3 @@
 AWeapon::AWeapon()
 {
 }
-
-void AWeapon::Interact()
-{
-}
