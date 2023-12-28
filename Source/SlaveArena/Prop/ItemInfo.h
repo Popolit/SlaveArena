@@ -23,7 +23,7 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 		FSoftObjectPath Tooltip_;
 	UPROPERTY(EditDefaultsOnly)
-		TSoftClassPtr<UStreamableRenderAsset> Mesh_;
+		TSoftObjectPtr<UStreamableRenderAsset> Mesh_;
 	UPROPERTY(EditDefaultsOnly)
 		uint8 MaxStack_ = 1;
 	UPROPERTY(EditDefaultsOnly)

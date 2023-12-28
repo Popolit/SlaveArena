@@ -10,15 +10,16 @@ void UUW_Inventory_Slot::NativeOnInitialized()
 	SetSlotEmpty();
 }
 
-void UUW_Inventory_Slot::SetItem(const uint8 _ItemID)
+
+void UUW_Inventory_Slot::SetItem(const uint8 _ItemID) const
 {
-	UWorld* World = GetWorld();
+	const UWorld* World = GetWorld();
 	if(nullptr == World)
 	{
 		return;
 	}
-	UItemSubsystem* ItemSubsystem = World->GetGameInstance()->GetSubsystem<UItemSubsystem>();
-	FItemInfo* ItemInfo = ItemSubsystem->GetItemInfo(_ItemID);
+	const UItemSubsystem* ItemSubsystem = World->GetGameInstance()->GetSubsystem<UItemSubsystem>();
+	const FItemInfo* ItemInfo = ItemSubsystem->GetItemInfo(_ItemID);
 
 	if(nullptr == ItemInfo)
 	{

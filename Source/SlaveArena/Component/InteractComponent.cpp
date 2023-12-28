@@ -1,6 +1,6 @@
 #include "InteractComponent.h"
 
-#include "SlaveArena/Prop/Weapon.h"
+#include "SlaveArena/Prop/Interactable.h"
 
 
 UInteractComponent::UInteractComponent()

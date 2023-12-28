@@ -5,7 +5,7 @@
 
 void UAction_InteractProp::DoAction(const void* _Instance)
 {
-	const AActor* Actor = Cast<AActor>(GetOuter());
+	AActor* Actor = Cast<AActor>(GetOuter());
 	if(nullptr == Actor)
 	{
 		return;
@@ -22,7 +22,7 @@ void UAction_InteractProp::DoAction(const void* _Instance)
 	//TODO : Prop 종류에 따른 상호작용 구현
 	if(nullptr != Prop)
 	{
-		(*Prop)->Interact();
+		(*Prop)->Interact(Actor);
 		PlayAnimation();
 		PlaySound();
 	}

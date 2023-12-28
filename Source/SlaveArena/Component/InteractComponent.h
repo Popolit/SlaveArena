@@ -5,7 +5,7 @@
 #include "InteractComponent.generated.h"
 
 /*
- * Owner Can Interact To Prop (Interactive)
+ * Owner Can Interact To Prop (Interactable)
  */
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class SLAVEARENA_API UInteractComponent : public USphereComponent

@@ -12,7 +12,7 @@ protected:
 	virtual void NativeOnInitialized() override;
 
 public:
-	void SetItem(const uint8 _ItemID);
+	void SetItem(const uint8 _ItemID) const;
 	void SetItemCount(const uint8 _Count) const;
 	void SetSlotEmpty() const;
 
