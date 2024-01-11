@@ -32,8 +32,8 @@ private:
 		TObjectPtr<class USpringArmComponent> SpringArmComponent_;
 	UPROPERTY(VisibleDefaultsOnly)
 		TObjectPtr<class UCameraComponent> CameraComponent_;
-	UPROPERTY(VisibleDefaultsOnly)
-		TObjectPtr<class UInteractComponent> InteractComponent_;
-	UPROPERTY(VisibleDefaultsOnly)
-		TObjectPtr<class UInventoryComponent> InventoryComponent_;
+
+	TObjectPtr<class UInteractComponent> InteractComponent_;
+	TObjectPtr<class UInventoryComponent> InventoryComponent_;
+	TObjectPtr<class UWeaponComponent> WeaponComponent_;
 };

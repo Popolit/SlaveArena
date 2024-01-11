@@ -49,9 +49,3 @@ void UInputActionData::BindAll(AActor* _Actor)
 		InputComponent->BindAction(InputAction, ETriggerEvent::Triggered, NewAction, &UAction::DoActionByInput);
 	}
 }
-
-
-void UInputActionData::BindAll(UUserWidget* _Widget)
-{
-	//TODO : Widget Outer ¹ÙÀÎµù
-}

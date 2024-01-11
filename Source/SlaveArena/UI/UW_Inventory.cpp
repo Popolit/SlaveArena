@@ -2,7 +2,33 @@
 
 #include "UW_Inventory_Slot.h"
 #include "Components/UniformGridPanel.h"
+#include "SlaveArena/Action/Action.h"
 #include "SlaveArena/Component/InventoryComponent.h"
+
+/*const TWeakObjectPtr<UAction>& UUW_Inventory::AddActionForUI(const TSubclassOf<UAction>& _ActionClass)
+{
+	if(_ActionClass)
+	{
+		UAction* Action = NewObject<UAction>(this, _ActionClass);
+		ActionsForUI_.Add(Action);
+		return nullptr;
+	}
+	return nullptr;
+}*/
+
+void UUW_Inventory::AddInventoryAction(const UAction* _Action)
+{
+	InventoryActions_.Add(_Action);
+}
+
+int32 UUW_Inventory::GetSelectedItemIndex()
+{
+	check(false == SelectedItem_.IsExplicitlyNull());
+	const UUW_Inventory_Slot* InventorySlot = Cast<UUW_Inventory_Slot>(SelectedItem_.Get());
+	check(InventorySlot);
+	const int32 Ret = V_UGrid_Slots_->GetChildIndex(InventorySlot);
+	return Ret;
+}
 
 void UUW_Inventory::NativeOnInitialized()
 {
@@ -10,7 +36,9 @@ void UUW_Inventory::NativeOnInitialized()
 
 	for (UWidget* Child : V_UGrid_Slots_->GetAllChildren())
 	{
-		Slots_.Add(Cast<UUW_Inventory_Slot>(Child));
+		UUW_Inventory_Slot* InventorySlot = Cast<UUW_Inventory_Slot>(Child);
+		Slots_.Add(InventorySlot);
+		InventorySlot->OnInventorySlotSelected_.BindUObject(this, &UUW_Inventory::OnInventorySlotSelected);
 	}
 
 	const APawn* Owner = GetOwningPlayerPawn();
@@ -20,6 +48,7 @@ void UUW_Inventory::NativeOnInitialized()
 		if(Inventory)
 		{
 			Inventory->OnInventoryChanged_.BindUObject(this, &UUW_Inventory::SetInventoryData);
+			Inventory->GetIndexOfSelectedItemDelegate_.BindUObject(this, &UUW_Inventory::GetSelectedItemIndex);
 			SetInventoryData(Inventory->GetInventory());
 		}
 	}
@@ -39,4 +68,9 @@ void UUW_Inventory::SetInventoryData(const TArray<FItemData>& _Items)
 			Slots_[u]->SetItemCount(_Items[u].Count_);
 		}
 	}
+}
+
+void UUW_Inventory::OnInventorySlotSelected(const UWidget* _Slot)
+{
+	SelectedItem_ = _Slot;
 }

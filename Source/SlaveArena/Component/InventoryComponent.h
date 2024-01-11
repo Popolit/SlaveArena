@@ -10,6 +10,7 @@ struct FItemData
 };
 
 DECLARE_DELEGATE_OneParam(FOnInventoryChanged, const TArray<FItemData>&)
+DECLARE_DELEGATE_RetVal(int32, FGetIndexOfSelectedItemDelegate);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class SLAVEARENA_API UInventoryComponent : public UActorComponent
@@ -18,6 +19,7 @@ class SLAVEARENA_API UInventoryComponent : public UActorComponent
 public:
 	UInventoryComponent();
 	uint8 TryPushItem(uint8 _ItemID, uint8 _Count, uint8 _MaxStack);
+	void TryEquipSelectedItem() const;
 	const TArray<FItemData>& GetInventory();
 
 private:
@@ -25,11 +27,12 @@ private:
 
 public:
 	FOnInventoryChanged OnInventoryChanged_;
-
+	FGetIndexOfSelectedItemDelegate GetIndexOfSelectedItemDelegate_;
 private:
 	UPROPERTY(EditDefaultsOnly)
 		uint8 MaxSlot_;
 	UPROPERTY(EditDefaultsOnly)
 		float MaxWeight_;
 	TArray<FItemData> Items_;
+	int32 SelectedSlotIndex_ = INDEX_NONE;
 };

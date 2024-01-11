@@ -12,7 +12,7 @@ class SLAVEARENA_API UInputActionData : public UDataAsset
 public:
 	void AddMappingContext(const ULocalPlayer* _LocalPlayer) const;
 	void BindAll(AActor* _Actor);
-	void BindAll(UUserWidget* _Widget);
+	void BindAll(UInputComponent* _InputComponent);
 private:
 	UPROPERTY(EditDefaultsOnly)
 		TObjectPtr<class UInputMappingContext> InputMappingContext_;

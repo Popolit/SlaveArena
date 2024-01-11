@@ -8,7 +8,7 @@ public class SlaveArena : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "Niagara", "UMG", "DeveloperSettings" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "SlateCore", "EnhancedInput", "Niagara", "UMG", "DeveloperSettings" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
 

@@ -1,5 +1,7 @@
 #include "InventoryComponent.h"
 
+#include "WeaponComponent.h"
+
 UInventoryComponent::UInventoryComponent()
 {
 	MaxSlot_ = 9;
@@ -39,6 +41,28 @@ uint8 UInventoryComponent::TryPushItem(uint8 _ItemID, uint8 _Count, uint8 _MaxSt
 	OnInventoryChanged_.ExecuteIfBound(Items_);
 	return Leftover;
 }
+
+
+void UInventoryComponent::TryEquipSelectedItem() const
+{
+	if(false == GetIndexOfSelectedItemDelegate_.IsBound())
+	{
+		return;
+		
+	}
+	const uint32 Index = GetIndexOfSelectedItemDelegate_.Execute();
+	if(false == Items_.IsValidIndex(Index))
+	{
+		return;
+	}
+
+	UWeaponComponent* WeaponComponent = Cast<UWeaponComponent>(GetOwner()->GetComponentByClass(UWeaponComponent::StaticClass()));
+	if(ensureMsgf(WeaponComponent, TEXT("WeaponComponent was nullptr")))
+	{
+		WeaponComponent->TryEquipItem(Items_[Index].ID_);
+	}
+}
+
 
 const TArray<FItemData>& UInventoryComponent::GetInventory()
 {
